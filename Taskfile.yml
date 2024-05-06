@@ -3,17 +3,17 @@
 version: '3'
 
 vars:
-  GREETING: Hello, World!
+  IMAGE_NAME: docker-node-dev-auto-refresh-image
 
 tasks:
   default:
     cmds:
-      - echo "{{.GREETING}}"
+      - echo "Hello, World!"
     silent: true
 
   docker:
     cmds:
-      - node docker-engine
+      - node docker-engine.mjs
     
   setup:
     cmds:
@@ -33,15 +33,15 @@ tasks:
       
   build:
     cmds:
-      - docker build -t docker-node-dev-auto-refresh-image .
+      - docker build -t {{.IMAGE_NAME}} .
       
   remove:
     cmds:
-      - docker rm docker-node-dev-auto-refresh-image -f
+      - docker rm {{.IMAGE_NAME}} -f
       
   run:
     cmds:
-      - docker container run -d --name docker-node-dev-auto-refresh-image -p 8080:8080 docker-node-dev-auto-refresh-image
+      - docker container run -d --name {{.IMAGE_NAME}} -p 8080:8080 {{.IMAGE_NAME}}
       
   start:
     cmds:
@@ -49,4 +49,4 @@ tasks:
       
   stop:
     cmds:
-      - docker stop docker-node-dev-auto-refresh-image
+      - docker stop {{.IMAGE_NAME}}
