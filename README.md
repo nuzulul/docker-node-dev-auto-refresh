@@ -1,5 +1,5 @@
 # docker-node-dev-auto-refresh
-Docker node development with automatically restart node server and refresh browser on change
+Docker node cjs development with automatically restart node server and refresh browser on change. Other : [esm version](https://github.com/nuzulul/docker-node-dev-auto-refresh-esm)
 
 ```
 //install taskfile
