@@ -29,7 +29,7 @@ tasks:
       
   dev:
     cmds:
-      - task docker setup install dev
+      - task docker setup install server
       
   build:
     cmds:
