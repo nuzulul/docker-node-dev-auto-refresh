@@ -1,0 +1,11 @@
+services:
+  install:
+    image: node:18.15.0-alpine
+    volumes:
+      - nodemodules:/usr/src/app/node_modules
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm install --include dev
+volumes:
+  nodemodules:
+    external: true
