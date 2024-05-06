@@ -13,7 +13,7 @@ tasks:
 
   docker:
     cmds:
-      - node docker-engine.js
+      - node docker-engine
     
   setup:
     cmds:

@@ -1,33 +1,19 @@
-const express = require("express");
-const path = require("path");
-
 const env = process.env.NODE_ENV || "development";
 const port = normalizePort(process.env.PORT || '8080');
+
+const express = require("express");
+const path = require("path");
 
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
 
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
 var app = express();
 
 if (env === "development") {
+
 	const livereload = require("livereload");
 	const connectLiveReload = require("connect-livereload");
+	
 	const liveReloadServer = livereload.createServer();
 	liveReloadServer.server.once("connection", () => {
 	  setTimeout(() => {
@@ -86,3 +72,19 @@ app.use(function (err, req, res, next) {
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
